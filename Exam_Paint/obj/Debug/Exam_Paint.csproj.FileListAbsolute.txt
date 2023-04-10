@@ -9,3 +9,14 @@ D:\ДЗ_Шаг\Windows Forms C#\Lessons_8\Exam_Paint\obj\Debug\Exam_Paint.csproj
 D:\ДЗ_Шаг\Windows Forms C#\Lessons_8\Exam_Paint\obj\Debug\Exam_Paint.csproj.CoreCompileInputs.cache
 D:\ДЗ_Шаг\Windows Forms C#\Lessons_8\Exam_Paint\obj\Debug\Exam_Paint.exe
 D:\ДЗ_Шаг\Windows Forms C#\Lessons_8\Exam_Paint\obj\Debug\Exam_Paint.pdb
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\bin\Debug\Exam_Paint.exe.config
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\bin\Debug\Exam_Paint.exe
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\bin\Debug\Exam_Paint.pdb
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.csproj.AssemblyReference.cache
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.csproj.SuggestedBindingRedirects.cache
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.Properties.Resources.resources
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.csproj.GenerateResource.cache
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.csproj.CoreCompileInputs.cache
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.exe
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.pdb
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.FPaint.resources
