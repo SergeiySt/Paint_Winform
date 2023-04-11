@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -13,28 +15,31 @@ namespace Exam_Paint
 {
     public partial class FPaint : Form
     {
-        private Bitmap bitmap;
+        private Bitmap bmp;
         private Graphics graphics;
+        private Pen pen;
+        private Brush brush;
+        private Point startPoint;
+        private Point endPoint;
+        private bool isMouseDown;
+        private bool isFillShape;
+        private int eraserSize = 10;
+        private int index;
 
-        int PenSize = 2;
-        int PenSizeErase = 10;
-
-        private Point previousPoint;
-        private Pen pen = new Pen(Color.Black, 2);
-        private bool isDrawing = false;
-
-        
-
-        //  private Panel canvasPanel = new Panel();
+     
         public FPaint()
         {
             InitializeComponent();
 
-            //this.DoubleBuffered = true;
-            //this.ResizeRedraw = true;
- 
-            this.bitmap = new Bitmap(this.pictureBox1.Width, this.pictureBox1.Height);
-            this.graphics = Graphics.FromImage(this.bitmap);
+            bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            graphics = Graphics.FromImage(bmp);
+            pen = new Pen(Color.Black);
+            brush = new SolidBrush(Color.White);
+            isMouseDown = false;
+            isFillShape = false;
+
+
+            pictureBox1.Image = bmp;
         }
 
         private void toolStripButtonOpen_Click(object sender, EventArgs e)
@@ -58,89 +63,32 @@ namespace Exam_Paint
         private void toolStripButtonSave_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "PNG Image|*.png|JPEG Image|*.jpg|Bitmap Image|*.bmp";
-
-            saveFileDialog.ShowDialog();
-            if (saveFileDialog.FileName != "")
+            saveFileDialog.Filter = "JPEG Image|*.jpg|PNG Image|*.png|Bitmap Image|*.bmp";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                using (System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog.OpenFile())
+                string fileName = saveFileDialog.FileName;
+                ImageFormat format = ImageFormat.Jpeg;
+                if (fileName.EndsWith(".png"))
                 {
-                    if (pictureBox1.Image != null)
-                    {
-                        switch (saveFileDialog.FilterIndex)
-                        {
-                            case 0:
-                                pictureBox1.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Png);
-                                break;
-                            case 1:
-                                pictureBox1.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);
-                                break;
-                            case 2:
-                                pictureBox1.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Bmp);
-                                break;
-                        }
-                    }
+                    format = ImageFormat.Png;
                 }
+                else if (fileName.EndsWith(".bmp"))
+                {
+                    format = ImageFormat.Bmp;
+                }
+                pictureBox1.Image.Save(fileName, format);
             }
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-       
-
-        }
-
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-          
-        }
-
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-           
-        }
-
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
-        {
-        
-        }
-
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        {
-           
-        }
-
-        private void Form1_SizeChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void toolStripColors_Click(object sender, EventArgs e)
         {
-          
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                brush = new SolidBrush(colorDialog.Color);
+            }
         }
    
-        private void toolStripLine_Click(object sender, EventArgs e)
-        {
-           
-
-        }
-
-        private void toolStrip1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             
@@ -148,48 +96,139 @@ namespace Exam_Paint
 
         private void toolStripRectangle_Click(object sender, EventArgs e)
         {
-            
+            toolStripRectangle.Checked = true;
+            toolStripLine.Checked = false;
+            toolStripEllips.Checked = false;
+            toolStripPencil.Checked = false;
+            toolStripErase.Checked = false;
+            index = 2;
         }
-
+        private void toolStripLine_Click_1(object sender, EventArgs e)
+        {
+            toolStripLine.Checked = true;
+            toolStripEllips.Checked = false;
+            toolStripRectangle.Checked = false;
+            toolStripLine.Checked = false;
+            toolStripPencil.Checked = false;
+            toolStripErase.Checked = false;
+            index = 1;
+        }
         private void toolStripEllips_Click(object sender, EventArgs e)
         {
-          
+            toolStripEllips.Checked = true;
+            toolStripRectangle.Checked = false;
+            toolStripLine.Checked = false;
+            toolStripPencil.Checked = false;
+            toolStripErase.Checked = false;
+            index = 3;
         }
 
         private void toolStripErase_Click(object sender, EventArgs e)
         {
-            toolStripErase.Checked = true;
+            toolStripEllips.Checked = false;
+            toolStripRectangle.Checked = false;
+            toolStripLine.Checked = false;
             toolStripPencil.Checked = false;
-            pen = new Pen(Color.White, PenSizeErase);
+            toolStripErase.Checked = true;
+            index = 5;
         }
 
         private void toolStripPencil_Click(object sender, EventArgs e)
         {
+            toolStripRectangle.Checked = false;
+            toolStripLine.Checked = false;
+            toolStripEllips.Checked = false;
             toolStripErase.Checked = false;
             toolStripPencil.Checked = true;
-            pen = new Pen(Color.Black, PenSize);
+            index = 4;
         }
         private void pictureBox1_MouseDown_1(object sender, MouseEventArgs e)
         {
-            isDrawing = true;
-            previousPoint = new Point(e.X, e.Y);
-        }
+            isMouseDown = true;
+            startPoint = e.Location;
 
-        private void pictureBox1_MouseUp_1(object sender, MouseEventArgs e)
-        {
-            isDrawing = false;
+            if (index == 4)
+            {
+                graphics.DrawLine(pen, startPoint, startPoint);
+            }
         }
 
         private void pictureBox1_MouseMove_1(object sender, MouseEventArgs e)
         {
-            if (isDrawing)
+            if (isMouseDown)
             {
-                //Graphics g = this.pictureBox1.CreateGraphics();
-                //g.DrawLine(pen, previousPoint, new Point(e.X, e.Y));
-                //previousPoint = new Point(e.X, e.Y);
-                this.graphics.DrawLine(pen, previousPoint, new Point(e.X, e.Y));
-                this.pictureBox1.CreateGraphics().DrawImageUnscaled(bitmap, Point.Empty);
-                previousPoint = new Point(e.X, e.Y);
+                endPoint = e.Location;
+
+                if (index == 4)
+                {
+                    graphics.DrawLine(pen, startPoint, endPoint);
+                    startPoint = endPoint;
+                }
+
+                if(index == 5)
+                {
+                    Rectangle eraserRect = new Rectangle(e.Location.X - eraserSize / 2, e.Location.Y - eraserSize / 2, eraserSize, eraserSize);
+                    graphics.FillRectangle(Brushes.White, eraserRect);
+                }
+                pictureBox1.Invalidate();
+            }
+        }
+        private void pictureBox1_MouseUp_1(object sender, MouseEventArgs e)
+        {
+            isMouseDown = false;
+            endPoint = e.Location;
+
+            if (index == 1)
+            {
+                graphics.DrawLine(pen, startPoint, endPoint);
+            }
+            else if (index == 2)
+            {
+                Rectangle rect = new Rectangle(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), Math.Abs(startPoint.X - endPoint.X), Math.Abs(startPoint.Y - endPoint.Y));
+                if (isFillShape)
+                {
+                    graphics.FillRectangle(brush, rect);
+                }
+                graphics.DrawRectangle(pen, rect);
+            }
+            else if (index == 3)
+            {
+                Rectangle rect = new Rectangle(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), Math.Abs(startPoint.X - endPoint.X), Math.Abs(startPoint.Y - endPoint.Y));
+                if (isFillShape)
+                {
+                    graphics.FillEllipse(brush, rect);
+                }
+                graphics.DrawEllipse(pen, rect);
+            }
+            pictureBox1.Invalidate();
+        }
+
+        private void pictureBox1_Paint_1(object sender, PaintEventArgs e)
+        {
+            if (isMouseDown)
+            {
+                if (index == 1)
+                {
+                    e.Graphics.DrawLine(pen, startPoint, endPoint);
+                }
+                else if (index == 2)
+                {
+                    Rectangle rect = new Rectangle(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), Math.Abs(startPoint.X - endPoint.X), Math.Abs(startPoint.Y - endPoint.Y));
+                    if (isFillShape)
+                    {
+                        e.Graphics.FillRectangle(brush, rect);
+                    }
+                    e.Graphics.DrawRectangle(pen, rect);
+                }
+                else if (index == 3)
+                {
+                    Rectangle rect = new Rectangle(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), Math.Abs(startPoint.X - endPoint.X), Math.Abs(startPoint.Y - endPoint.Y));
+                    if (isFillShape)
+                    {
+                        e.Graphics.FillEllipse(brush, rect);
+                    }
+                    e.Graphics.DrawEllipse(pen, rect);
+                }
             }
         }
 
@@ -197,8 +236,8 @@ namespace Exam_Paint
         {
             toolStripMenuItem2.Checked = true;
 
-            pen.Width = PenSize = 1;
-            pen.Width = PenSizeErase = 1;
+            pen.Width = 1;
+            eraserSize = 1;
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -206,8 +245,8 @@ namespace Exam_Paint
             toolStripMenuItem2.Checked = false;
             toolStripMenuItem3.Checked = true;
 
-            pen.Width = PenSize = 3;
-            pen.Width = PenSizeErase = 3;
+            pen.Width = 3;
+            eraserSize = 3;
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
@@ -216,8 +255,8 @@ namespace Exam_Paint
             toolStripMenuItem3.Checked = false;
             toolStripMenuItem4.Checked = true;
 
-            pen.Width = PenSize = 5;
-            pen.Width = PenSizeErase = 5;
+            pen.Width = 5;
+            eraserSize = 5;
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
@@ -225,10 +264,10 @@ namespace Exam_Paint
             toolStripMenuItem2.Checked = false;
             toolStripMenuItem3.Checked = false;
             toolStripMenuItem4.Checked = false;
-            toolStripMenuItem5.Checked = false;
+            toolStripMenuItem5.Checked = true;
 
-            pen.Width = PenSize = 8;
-            pen.Width = PenSizeErase = 8;
+            pen.Width = 8;
+            eraserSize=8;
         }
     }
 }
