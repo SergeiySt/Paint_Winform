@@ -63,6 +63,16 @@ namespace Exam_Paint.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1662320979_tra_5 {
+            get {
+                object obj = ResourceManager.GetObject("1662320979_tra-5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_волнистая_линия_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-волнистая-линия-32", resourceCulture);
@@ -97,6 +107,26 @@ namespace Exam_Paint.Properties {
             get {
                 object obj = ResourceManager.GetObject("icons8-волнистая-линия-32 (52)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Paint_Palette_Vector_PNG_File {
+            get {
+                object obj = ResourceManager.GetObject("Paint-Palette-Vector-PNG-File", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Pencil_cur {
+            get {
+                object obj = ResourceManager.GetObject("Pencil_cur", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }
