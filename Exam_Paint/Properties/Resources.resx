@@ -118,16 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="icons8-волнистая-линия-32 (52)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\icons8-волнистая-линия-32 (52).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-волнистая-линия-32 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-волнистая-линия-32 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-волнистая-линия-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-волнистая-линия-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-волнистая-линия-32 (52)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pictures\icons8-волнистая-линия-32 (52).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-волнистая-линия-32 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-волнистая-линия-32 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Paint-Palette-Vector-PNG-File" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\Paint-Palette-Vector-PNG-File.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1662320979_tra-5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\1662320979_tra-5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pencil_cur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\Windows 7 MS Paint Pencil.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

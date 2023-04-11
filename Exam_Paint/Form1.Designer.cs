@@ -31,10 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FPaint));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemNewPaper = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemOpenFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItemPrint = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.довідкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonOpen = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonNewPaper = new System.Windows.Forms.ToolStripButton();
             this.toolStripPencil = new System.Windows.Forms.ToolStripButton();
             this.toolStripErase = new System.Windows.Forms.ToolStripButton();
             this.toolStripLine = new System.Windows.Forms.ToolStripButton();
@@ -45,9 +54,9 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButtonFill = new System.Windows.Forms.ToolStripButton();
             this.toolStripColors = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonResize = new System.Windows.Forms.ToolStripButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -56,7 +65,8 @@
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonFill = new System.Windows.Forms.ToolStripButton();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -75,21 +85,89 @@
             // 
             // файлToolStripMenuItem
             // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemNewPaper,
+            this.ToolStripMenuItemOpenFile,
+            this.ToolStripMenuItemSave,
+            this.toolStripMenuItem1,
+            this.ToolStripMenuItemPrint,
+            this.toolStripMenuItem7,
+            this.ToolStripMenuItemExit});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
+            // ToolStripMenuItemNewPaper
+            // 
+            this.ToolStripMenuItemNewPaper.Name = "ToolStripMenuItemNewPaper";
+            this.ToolStripMenuItemNewPaper.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.ToolStripMenuItemNewPaper.Size = new System.Drawing.Size(181, 22);
+            this.ToolStripMenuItemNewPaper.Text = "Новий лист";
+            this.ToolStripMenuItemNewPaper.Click += new System.EventHandler(this.ToolStripMenuItemNewPaper_Click);
+            // 
+            // ToolStripMenuItemOpenFile
+            // 
+            this.ToolStripMenuItemOpenFile.Name = "ToolStripMenuItemOpenFile";
+            this.ToolStripMenuItemOpenFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.ToolStripMenuItemOpenFile.Size = new System.Drawing.Size(181, 22);
+            this.ToolStripMenuItemOpenFile.Text = "Відкрити";
+            this.ToolStripMenuItemOpenFile.Click += new System.EventHandler(this.ToolStripMenuItemOpenFile_Click);
+            // 
+            // ToolStripMenuItemSave
+            // 
+            this.ToolStripMenuItemSave.Name = "ToolStripMenuItemSave";
+            this.ToolStripMenuItemSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.ToolStripMenuItemSave.Size = new System.Drawing.Size(181, 22);
+            this.ToolStripMenuItemSave.Text = "Зберегти";
+            this.ToolStripMenuItemSave.Click += new System.EventHandler(this.ToolStripMenuItemSave_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(178, 6);
+            // 
+            // ToolStripMenuItemPrint
+            // 
+            this.ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            this.ToolStripMenuItemPrint.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.ToolStripMenuItemPrint.Size = new System.Drawing.Size(181, 22);
+            this.ToolStripMenuItemPrint.Text = "Друк";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(178, 6);
+            // 
+            // ToolStripMenuItemExit
+            // 
+            this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            this.ToolStripMenuItemExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(181, 22);
+            this.ToolStripMenuItemExit.Text = "Вихід";
+            this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
+            // 
             // довідкаToolStripMenuItem
             // 
+            this.довідкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemHelp});
             this.довідкаToolStripMenuItem.Name = "довідкаToolStripMenuItem";
             this.довідкаToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.довідкаToolStripMenuItem.Text = "Довідка";
+            // 
+            // ToolStripMenuItemHelp
+            // 
+            this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
+            this.ToolStripMenuItemHelp.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F1)));
+            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(196, 22);
+            this.ToolStripMenuItemHelp.Text = "Про програму";
+            this.ToolStripMenuItemHelp.Click += new System.EventHandler(this.ToolStripMenuItemHelp_Click);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonOpen,
             this.toolStripButtonSave,
+            this.toolStripButtonNewPaper,
             this.toolStripPencil,
             this.toolStripErase,
             this.toolStripLine,
@@ -132,6 +210,16 @@
             this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonSave.Text = "toolStripButton2";
             this.toolStripButtonSave.Click += new System.EventHandler(this.toolStripButtonSave_Click);
+            // 
+            // toolStripButtonNewPaper
+            // 
+            this.toolStripButtonNewPaper.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonNewPaper.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNewPaper.Image")));
+            this.toolStripButtonNewPaper.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonNewPaper.Name = "toolStripButtonNewPaper";
+            this.toolStripButtonNewPaper.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonNewPaper.Text = "toolStripButton9";
+            this.toolStripButtonNewPaper.Click += new System.EventHandler(this.toolStripButtonNewPaper_Click);
             // 
             // toolStripPencil
             // 
@@ -201,7 +289,7 @@
             // 
             this.toolStripMenuItem2.Image = global::Exam_Paint.Properties.Resources.icons8_волнистая_линия_32;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(99, 22);
             this.toolStripMenuItem2.Text = "1 px";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
@@ -209,7 +297,7 @@
             // 
             this.toolStripMenuItem3.Image = global::Exam_Paint.Properties.Resources.icons8_волнистая_линия_32__1_;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(99, 22);
             this.toolStripMenuItem3.Text = "3 px";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
@@ -217,7 +305,7 @@
             // 
             this.toolStripMenuItem4.Image = global::Exam_Paint.Properties.Resources.icons8_волнистая_линия_32__52_;
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(99, 22);
             this.toolStripMenuItem4.Text = "5 px";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
@@ -225,9 +313,19 @@
             // 
             this.toolStripMenuItem5.Image = global::Exam_Paint.Properties.Resources.icons8_волнистая_линия_32__2_;
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(99, 22);
             this.toolStripMenuItem5.Text = " 8 px";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            // 
+            // toolStripButtonFill
+            // 
+            this.toolStripButtonFill.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonFill.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFill.Image")));
+            this.toolStripButtonFill.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFill.Name = "toolStripButtonFill";
+            this.toolStripButtonFill.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonFill.Text = "toolStripButton9";
+            this.toolStripButtonFill.Click += new System.EventHandler(this.toolStripButtonFill_Click);
             // 
             // toolStripColors
             // 
@@ -248,19 +346,6 @@
             this.toolStripButtonResize.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonResize.Text = "toolStripButton1";
             this.toolStripButtonResize.Click += new System.EventHandler(this.toolStripButtonResize_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 52);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(720, 391);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint_1);
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown_1);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove_1);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp_1);
             // 
             // toolStripButton1
             // 
@@ -351,15 +436,29 @@
             this.toolStripButton8.Text = "toolStripButton8";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
-            // toolStripButtonFill
+            // checkBox1
             // 
-            this.toolStripButtonFill.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonFill.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFill.Image")));
-            this.toolStripButtonFill.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonFill.Name = "toolStripButtonFill";
-            this.toolStripButtonFill.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonFill.Text = "toolStripButton9";
-            this.toolStripButtonFill.Click += new System.EventHandler(this.toolStripButtonFill_Click);
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(480, 29);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(140, 17);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "Суцільний колір фігури";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 52);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(720, 391);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint_1);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown_1);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove_1);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp_1);
             // 
             // FPaint
             // 
@@ -367,6 +466,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(786, 515);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -416,6 +516,16 @@
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripButton toolStripButton8;
         private System.Windows.Forms.ToolStripButton toolStripButtonFill;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemNewPaper;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemOpenFile;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSave;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemPrint;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemHelp;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemExit;
+        private System.Windows.Forms.ToolStripButton toolStripButtonNewPaper;
     }
 }
 

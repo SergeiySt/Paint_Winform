@@ -20,3 +20,4 @@ D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_P
 D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.exe
 D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.pdb
 D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.FPaint.resources
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\Paint_Winform\Exam_Paint\obj\Debug\Exam_Paint.FHelp.resources
