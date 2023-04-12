@@ -230,7 +230,6 @@
             this.toolStripPencil.Size = new System.Drawing.Size(23, 22);
             this.toolStripPencil.Text = "toolStripButton2";
             this.toolStripPencil.Click += new System.EventHandler(this.toolStripPencil_Click);
-            this.toolStripPencil.MouseEnter += new System.EventHandler(this.toolStripPencil_MouseEnter);
             // 
             // toolStripErase
             // 

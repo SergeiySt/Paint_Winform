@@ -471,11 +471,5 @@ namespace Exam_Paint
                 Application.Exit();
             }
         }
-
-        private void toolStripPencil_MouseEnter(object sender, EventArgs e)
-        {
-          //  Cursor customCursor = new Cursor(Properties.Resources.Pencil_cur);
-          //  this.Cursor = Cursors.Pencil;
-        }
     }
 }
