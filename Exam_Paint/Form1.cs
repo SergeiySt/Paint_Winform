@@ -25,17 +25,8 @@ namespace Exam_Paint
         private bool isFillShape;
         private int eraserSize = 10;
         private int index;
+        private bool statusPicture = false;
 
-        private Brush brushFill;
-        private bool toolStripButtonResize_2 = false;
-        private Color primaryColor;
-
-        //private Cursor customCursor = new Cursor("Pencil_cur");
-
-       
-
-        //Cursor myCursor = new Cursor("myCursor.cur");
-        //    this.Cursor = myCursor;
         public FPaint()
         {
             InitializeComponent();
@@ -79,8 +70,9 @@ namespace Exam_Paint
             {
                 string fileName = saveFileDialog.FileName;
                 ImageFormat format = ImageFormat.Jpeg;
+               
                 if (fileName.EndsWith(".png"))
-                {
+                {  
                     format = ImageFormat.Png;
                 }
                 else if (fileName.EndsWith(".bmp"))
@@ -111,6 +103,7 @@ namespace Exam_Paint
             toolStripPencil.Checked = false;
             toolStripErase.Checked = false;
             toolStripButtonResize.Checked = false;
+            pictureBox1.Cursor = Cursors.Cross;
             index = 2;
         }
         private void toolStripLine_Click_1(object sender, EventArgs e)
@@ -122,7 +115,7 @@ namespace Exam_Paint
             toolStripPencil.Checked = false;
             toolStripErase.Checked = false;
             toolStripButtonResize.Checked = false;
-          //  pictureBox1.Cursor = Cursors.Cross;
+            pictureBox1.Cursor = Cursors.Cross;
             index = 1;
         }
         private void toolStripEllips_Click(object sender, EventArgs e)
@@ -133,6 +126,7 @@ namespace Exam_Paint
             toolStripPencil.Checked = false;
             toolStripErase.Checked = false;
             toolStripButtonResize.Checked = false;
+            pictureBox1.Cursor = Cursors.Cross;
             index = 3;
         }
         private void toolStripErase_Click(object sender, EventArgs e)
@@ -155,13 +149,14 @@ namespace Exam_Paint
             toolStripPencil.Checked = true;
             toolStripButtonResize.Checked = false;
             index = 4;
-        //   pictureBox1.Cursor = customCursor;
+         // pictureBox1.Cursor = Cursor.;
         }
         private void pictureBox1_MouseDown_1(object sender, MouseEventArgs e)
-        {       
+        {
             isMouseDown = true;
+            statusPicture = true;
 
-            pictureBox1.Invalidate();
+         //  pictureBox1.Invalidate();
             startPoint = e.Location;
         }
         private void pictureBox1_MouseMove_1(object sender, MouseEventArgs e)
@@ -191,6 +186,11 @@ namespace Exam_Paint
                     }
                 }
 
+                if(index == 7)
+                {
+                    graphics.FillRectangle(brush, 0, 0, pictureBox1.Width, pictureBox1.Height);
+                }
+
                 pictureBox1.Invalidate();
             }
         }
@@ -206,6 +206,7 @@ namespace Exam_Paint
             else if (index == 2)
             {
                 Rectangle rect = new Rectangle(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), Math.Abs(startPoint.X - endPoint.X), Math.Abs(startPoint.Y - endPoint.Y));
+                
                 if (isFillShape)
                 {
                     graphics.FillRectangle(brush, rect);
@@ -255,6 +256,9 @@ namespace Exam_Paint
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             toolStripMenuItem2.Checked = true;
+            toolStripMenuItem3.Checked = false;
+            toolStripMenuItem4.Checked = false;
+            toolStripMenuItem5.Checked = false;
 
             pen.Width = 1;
             eraserSize = 1;
@@ -301,64 +305,83 @@ namespace Exam_Paint
         {
             pen.Color = Color.Red;
             brush = new SolidBrush(Color.Red);
+
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             pen.Color = Color.Orange;
-            brush = new SolidBrush(Color.Orange);
+            brush = new SolidBrush(Color.Orange);        
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             pen.Color= Color.Yellow;
-            brush = new SolidBrush(Color.Orange);
+            brush = new SolidBrush(Color.Yellow);
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             pen.Color = Color.LawnGreen;
-            brush = new SolidBrush(Color.Orange);
+            brush = new SolidBrush(Color.LawnGreen);
         }
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             pen.Color = Color.Blue;
-            brush = new SolidBrush(Color.Orange);
+            brush = new SolidBrush(Color.Blue);
         }
 
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             pen.Color = Color.Fuchsia;
-            brush = new SolidBrush(Color.Orange);
+            brush = new SolidBrush(Color.Fuchsia);
         }
 
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             pen.Color = Color.DarkViolet;
-            brush = new SolidBrush(Color.Orange);
+            brush = new SolidBrush(Color.DarkViolet);  
         }
 
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
             pen.Color = Color.Black;
-            brush = new SolidBrush(Color.Orange);
+            brush = new SolidBrush(Color.Black);
         }
 
         private void toolStripButtonFill_Click(object sender, EventArgs e)
         {
-           // index = 7;
-           // isFillShape = toolStripButtonFill.Checked;
+            toolStripButtonFill.Checked = true;
+            index = 7;
         }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            isFillShape = checkBox1.Checked;
-        }
-
         private void toolStripButtonNewPaper_Click(object sender, EventArgs e)
         {
-            graphics.Clear(Color.White);
-            pictureBox1.Refresh();
+            if (statusPicture)
+            {
+                DialogResult savePicture = MessageBox.Show("Ви хочете зберегти ваші зміни?", "Примітка", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+                if (savePicture == DialogResult.Yes)
+                {
+                    toolStripButtonSave_Click(sender, e);
+                    graphics.Clear(Color.White);
+                    pictureBox1.Refresh();
+                }
+                else if (savePicture == DialogResult.Cancel)
+                {
+                    // e.Cancel = true;
+                }
+                else
+                {
+                    graphics.Clear(Color.White);
+                    pictureBox1.Refresh();
+                }
+            }
+            else
+            {
+                graphics.Clear(Color.White);
+                pictureBox1.Refresh();
+            }
         }
 
         private void ToolStripMenuItemHelp_Click(object sender, EventArgs e)
@@ -369,8 +392,7 @@ namespace Exam_Paint
 
         private void ToolStripMenuItemNewPaper_Click(object sender, EventArgs e)
         {
-            graphics.Clear(Color.White);
-            pictureBox1.Refresh();
+            toolStripButtonNewPaper_Click(sender, e);
         }
 
         private void ToolStripMenuItemOpenFile_Click(object sender, EventArgs e)
@@ -417,6 +439,43 @@ namespace Exam_Paint
         private void ToolStripMenuItemExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void checkBoxColorFigure_CheckedChanged(object sender, EventArgs e)
+        {
+            isFillShape = checkBoxColorFigure.Checked;
+        }
+   
+        private void FPaint_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (statusPicture)
+            {
+                DialogResult savePicture = MessageBox.Show("Ви хочете зберегти ваші зміни?", "Примітка", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+                if (savePicture == DialogResult.Yes)
+                {
+                    toolStripButtonSave_Click(sender, e);
+                    e.Cancel = false;
+                }
+                else if (savePicture == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
+            }
+            else
+            {
+                Application.Exit();
+            }
+        }
+
+        private void toolStripPencil_MouseEnter(object sender, EventArgs e)
+        {
+          //  Cursor customCursor = new Cursor(Properties.Resources.Pencil_cur);
+          //  this.Cursor = Cursors.Pencil;
         }
     }
 }
