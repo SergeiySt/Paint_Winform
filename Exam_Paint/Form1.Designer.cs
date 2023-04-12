@@ -65,7 +65,7 @@
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxColorFigure = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -230,6 +230,7 @@
             this.toolStripPencil.Size = new System.Drawing.Size(23, 22);
             this.toolStripPencil.Text = "toolStripButton2";
             this.toolStripPencil.Click += new System.EventHandler(this.toolStripPencil_Click);
+            this.toolStripPencil.MouseEnter += new System.EventHandler(this.toolStripPencil_MouseEnter);
             // 
             // toolStripErase
             // 
@@ -436,16 +437,16 @@
             this.toolStripButton8.Text = "toolStripButton8";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
-            // checkBox1
+            // checkBoxColorFigure
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(480, 29);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(140, 17);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Суцільний колір фігури";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBoxColorFigure.AutoSize = true;
+            this.checkBoxColorFigure.Location = new System.Drawing.Point(480, 29);
+            this.checkBoxColorFigure.Name = "checkBoxColorFigure";
+            this.checkBoxColorFigure.Size = new System.Drawing.Size(157, 17);
+            this.checkBoxColorFigure.TabIndex = 3;
+            this.checkBoxColorFigure.Text = "Заливка кольором фігури";
+            this.checkBoxColorFigure.UseVisualStyleBackColor = true;
+            this.checkBoxColorFigure.CheckedChanged += new System.EventHandler(this.checkBoxColorFigure_CheckedChanged);
             // 
             // pictureBox1
             // 
@@ -466,7 +467,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(786, 515);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkBoxColorFigure);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -475,6 +476,7 @@
             this.Name = "FPaint";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Paint";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FPaint_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -522,7 +524,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemPrint;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemHelp;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxColorFigure;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemExit;
         private System.Windows.Forms.ToolStripButton toolStripButtonNewPaper;
