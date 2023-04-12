@@ -101,5 +101,14 @@
   <ItemGroup>
     <None Include="Pictures\Windows 7 MS Paint Pencil.cur" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\icons8-отменить-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\icons8-отменить-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\icons8-повторить-16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

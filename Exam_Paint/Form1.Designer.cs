@@ -41,6 +41,14 @@
             this.довідкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.checkBoxColorFigure = new System.Windows.Forms.CheckBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.BRedo = new System.Windows.Forms.Button();
+            this.BUndo = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolStripButtonOpen = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonNewPaper = new System.Windows.Forms.ToolStripButton();
@@ -65,10 +73,9 @@
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.checkBoxColorFigure = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,6 +139,7 @@
             this.ToolStripMenuItemPrint.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.ToolStripMenuItemPrint.Size = new System.Drawing.Size(181, 22);
             this.ToolStripMenuItemPrint.Text = "Друк";
+            this.ToolStripMenuItemPrint.Click += new System.EventHandler(this.ToolStripMenuItemPrint_Click);
             // 
             // toolStripMenuItem7
             // 
@@ -191,6 +199,86 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // checkBoxColorFigure
+            // 
+            this.checkBoxColorFigure.AutoSize = true;
+            this.checkBoxColorFigure.Location = new System.Drawing.Point(480, 29);
+            this.checkBoxColorFigure.Name = "checkBoxColorFigure";
+            this.checkBoxColorFigure.Size = new System.Drawing.Size(157, 17);
+            this.checkBoxColorFigure.TabIndex = 3;
+            this.checkBoxColorFigure.Text = "Заливка кольором фігури";
+            this.checkBoxColorFigure.UseVisualStyleBackColor = true;
+            this.checkBoxColorFigure.CheckedChanged += new System.EventHandler(this.checkBoxColorFigure_CheckedChanged);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 493);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(786, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(14, 17);
+            this.toolStripStatusLabel1.Text = "X";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(14, 17);
+            this.toolStripStatusLabel2.Text = "Y";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(48, 17);
+            this.toolStripStatusLabel3.Text = "Розмір:";
+            this.toolStripStatusLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // BRedo
+            // 
+            this.BRedo.FlatAppearance.BorderSize = 0;
+            this.BRedo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BRedo.Image = global::Exam_Paint.Properties.Resources.icons8_повторить_16;
+            this.BRedo.Location = new System.Drawing.Point(132, 1);
+            this.BRedo.Name = "BRedo";
+            this.BRedo.Size = new System.Drawing.Size(22, 21);
+            this.BRedo.TabIndex = 6;
+            this.BRedo.UseVisualStyleBackColor = true;
+            this.BRedo.Click += new System.EventHandler(this.BRedo_Click);
+            // 
+            // BUndo
+            // 
+            this.BUndo.FlatAppearance.BorderSize = 0;
+            this.BUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BUndo.Image = global::Exam_Paint.Properties.Resources.icons8_отменить_16;
+            this.BUndo.Location = new System.Drawing.Point(110, 1);
+            this.BUndo.Name = "BUndo";
+            this.BUndo.Size = new System.Drawing.Size(22, 21);
+            this.BUndo.TabIndex = 5;
+            this.BUndo.UseVisualStyleBackColor = true;
+            this.BUndo.Click += new System.EventHandler(this.BUndo_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 53);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(720, 391);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.SizeChanged += new System.EventHandler(this.pictureBox1_SizeChanged);
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint_1);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown_1);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove_1);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp_1);
+            // 
             // toolStripButtonOpen
             // 
             this.toolStripButtonOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -199,6 +287,7 @@
             this.toolStripButtonOpen.Name = "toolStripButtonOpen";
             this.toolStripButtonOpen.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonOpen.Text = "toolStripButton1";
+            this.toolStripButtonOpen.ToolTipText = "Відкрити файл";
             this.toolStripButtonOpen.Click += new System.EventHandler(this.toolStripButtonOpen_Click);
             // 
             // toolStripButtonSave
@@ -209,6 +298,7 @@
             this.toolStripButtonSave.Name = "toolStripButtonSave";
             this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonSave.Text = "toolStripButton2";
+            this.toolStripButtonSave.ToolTipText = "Зберегти у файл";
             this.toolStripButtonSave.Click += new System.EventHandler(this.toolStripButtonSave_Click);
             // 
             // toolStripButtonNewPaper
@@ -219,6 +309,7 @@
             this.toolStripButtonNewPaper.Name = "toolStripButtonNewPaper";
             this.toolStripButtonNewPaper.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonNewPaper.Text = "toolStripButton9";
+            this.toolStripButtonNewPaper.ToolTipText = "Новий лист";
             this.toolStripButtonNewPaper.Click += new System.EventHandler(this.toolStripButtonNewPaper_Click);
             // 
             // toolStripPencil
@@ -229,6 +320,7 @@
             this.toolStripPencil.Name = "toolStripPencil";
             this.toolStripPencil.Size = new System.Drawing.Size(23, 22);
             this.toolStripPencil.Text = "toolStripButton2";
+            this.toolStripPencil.ToolTipText = "Олівець";
             this.toolStripPencil.Click += new System.EventHandler(this.toolStripPencil_Click);
             // 
             // toolStripErase
@@ -239,6 +331,7 @@
             this.toolStripErase.Name = "toolStripErase";
             this.toolStripErase.Size = new System.Drawing.Size(23, 22);
             this.toolStripErase.Text = "toolStripButton3";
+            this.toolStripErase.ToolTipText = "Гумка";
             this.toolStripErase.Click += new System.EventHandler(this.toolStripErase_Click);
             // 
             // toolStripLine
@@ -249,6 +342,7 @@
             this.toolStripLine.Name = "toolStripLine";
             this.toolStripLine.Size = new System.Drawing.Size(23, 22);
             this.toolStripLine.Text = "toolStripButton1";
+            this.toolStripLine.ToolTipText = "Лінія";
             this.toolStripLine.Click += new System.EventHandler(this.toolStripLine_Click_1);
             // 
             // toolStripRectangle
@@ -259,6 +353,7 @@
             this.toolStripRectangle.Name = "toolStripRectangle";
             this.toolStripRectangle.Size = new System.Drawing.Size(23, 22);
             this.toolStripRectangle.Text = "toolStripButton4";
+            this.toolStripRectangle.ToolTipText = "Квадрат";
             this.toolStripRectangle.Click += new System.EventHandler(this.toolStripRectangle_Click);
             // 
             // toolStripEllips
@@ -269,6 +364,7 @@
             this.toolStripEllips.Name = "toolStripEllips";
             this.toolStripEllips.Size = new System.Drawing.Size(23, 22);
             this.toolStripEllips.Text = "toolStripButton2";
+            this.toolStripEllips.ToolTipText = "Еліпс";
             this.toolStripEllips.Click += new System.EventHandler(this.toolStripEllips_Click);
             // 
             // toolStripDropDownButton1
@@ -284,6 +380,7 @@
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
             this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.ToolTipText = "Товщина лінії";
             // 
             // toolStripMenuItem2
             // 
@@ -325,6 +422,7 @@
             this.toolStripButtonFill.Name = "toolStripButtonFill";
             this.toolStripButtonFill.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonFill.Text = "toolStripButton9";
+            this.toolStripButtonFill.ToolTipText = "Заливка";
             this.toolStripButtonFill.Click += new System.EventHandler(this.toolStripButtonFill_Click);
             // 
             // toolStripColors
@@ -335,6 +433,7 @@
             this.toolStripColors.Name = "toolStripColors";
             this.toolStripColors.Size = new System.Drawing.Size(23, 22);
             this.toolStripColors.Text = "toolStripButton2";
+            this.toolStripColors.ToolTipText = "Палітра";
             this.toolStripColors.Click += new System.EventHandler(this.toolStripColors_Click);
             // 
             // toolStripButtonResize
@@ -345,6 +444,7 @@
             this.toolStripButtonResize.Name = "toolStripButtonResize";
             this.toolStripButtonResize.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonResize.Text = "toolStripButton1";
+            this.toolStripButtonResize.ToolTipText = "Розмір полотна";
             this.toolStripButtonResize.Click += new System.EventHandler(this.toolStripButtonResize_Click);
             // 
             // toolStripButton1
@@ -357,6 +457,7 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Червоний";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
@@ -368,6 +469,7 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.ToolTipText = "Помаранчевий";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripButton3
@@ -379,6 +481,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.ToolTipText = "Жовтий";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripButton4
@@ -390,6 +493,7 @@
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton4.Text = "toolStripButton4";
+            this.toolStripButton4.ToolTipText = "Салатовий";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripButton5
@@ -401,6 +505,7 @@
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton5.Text = "toolStripButton5";
+            this.toolStripButton5.ToolTipText = "Синій";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // toolStripButton6
@@ -412,6 +517,7 @@
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton6.Text = "toolStripButton6";
+            this.toolStripButton6.ToolTipText = "Фіолетовий";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // toolStripButton7
@@ -423,6 +529,7 @@
             this.toolStripButton7.Name = "toolStripButton7";
             this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton7.Text = "toolStripButton7";
+            this.toolStripButton7.ToolTipText = "Темно-фіолетовий";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
             // toolStripButton8
@@ -434,31 +541,8 @@
             this.toolStripButton8.Name = "toolStripButton8";
             this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton8.Text = "toolStripButton8";
+            this.toolStripButton8.ToolTipText = "Чорний";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
-            // 
-            // checkBoxColorFigure
-            // 
-            this.checkBoxColorFigure.AutoSize = true;
-            this.checkBoxColorFigure.Location = new System.Drawing.Point(480, 29);
-            this.checkBoxColorFigure.Name = "checkBoxColorFigure";
-            this.checkBoxColorFigure.Size = new System.Drawing.Size(157, 17);
-            this.checkBoxColorFigure.TabIndex = 3;
-            this.checkBoxColorFigure.Text = "Заливка кольором фігури";
-            this.checkBoxColorFigure.UseVisualStyleBackColor = true;
-            this.checkBoxColorFigure.CheckedChanged += new System.EventHandler(this.checkBoxColorFigure_CheckedChanged);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 52);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(720, 391);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint_1);
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown_1);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove_1);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp_1);
             // 
             // FPaint
             // 
@@ -466,6 +550,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(786, 515);
+            this.Controls.Add(this.BRedo);
+            this.Controls.Add(this.BUndo);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.checkBoxColorFigure);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.toolStrip1);
@@ -477,10 +564,14 @@
             this.Text = "Paint";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FPaint_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FPaint_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FPaint_KeyUp);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -527,6 +618,12 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemExit;
         private System.Windows.Forms.ToolStripButton toolStripButtonNewPaper;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.Button BUndo;
+        private System.Windows.Forms.Button BRedo;
     }
 }
 

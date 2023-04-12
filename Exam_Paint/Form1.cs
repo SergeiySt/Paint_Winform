@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -27,6 +29,9 @@ namespace Exam_Paint
         private int index;
         private bool statusPicture = false;
 
+        private string filePath = "Untitled";
+        
+
         public FPaint()
         {
             InitializeComponent();
@@ -37,9 +42,14 @@ namespace Exam_Paint
             brush = new SolidBrush(Color.White);
             isMouseDown = false;
             isFillShape = false;
-           
 
+            toolStripStatusLabel3.Text = $"Розмір: {pictureBox1.Width}x{pictureBox1.Height} пікселів";
+
+            graphics.Clear(Color.White);
+            pictureBox1.Refresh();
+          
             pictureBox1.Image = bmp;
+            this.Text = Path.GetFileName(filePath) + " - Paint";
         }
 
         private void toolStripButtonOpen_Click(object sender, EventArgs e)
@@ -54,6 +64,8 @@ namespace Exam_Paint
                     bmp = new Bitmap(openFileDialog.FileName);
                     graphics = Graphics.FromImage(bmp);
                     pictureBox1.Image = bmp;
+                    filePath = openFileDialog.FileName;
+                    this.Text = Path.GetFileName(filePath) + " - Paint";
                 }
                 catch
                 {
@@ -68,7 +80,7 @@ namespace Exam_Paint
             saveFileDialog.Filter = "JPEG Image|*.jpg|PNG Image|*.png|Bitmap Image|*.bmp";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string fileName = saveFileDialog.FileName;
+                 string fileName = saveFileDialog.FileName;
                 ImageFormat format = ImageFormat.Jpeg;
                
                 if (fileName.EndsWith(".png"))
@@ -93,7 +105,9 @@ namespace Exam_Paint
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            ToolTip toolTip = new ToolTip();
+            toolTip.SetToolTip(BUndo, "Undo (Ctrl+Z)");
+            toolTip.SetToolTip(BRedo, "Redo (Ctrl+Y)");
         }
         private void toolStripRectangle_Click(object sender, EventArgs e)
         {
@@ -161,6 +175,9 @@ namespace Exam_Paint
         }
         private void pictureBox1_MouseMove_1(object sender, MouseEventArgs e)
         {
+            toolStripStatusLabel1.Text = $"X: {e.X}, Y: {e.Y}";
+            toolStripStatusLabel2.Text = ""; 
+
             if (isMouseDown)
             {
                 endPoint = e.Location;
@@ -469,6 +486,62 @@ namespace Exam_Paint
             else
             {
                 Application.Exit();
+            }
+        }
+
+        private void ToolStripMenuItemPrint_Click(object sender, EventArgs e)
+        {
+            PrintImage(pictureBox1.Image);
+        }
+
+        private void PrintImage(Image image)
+        {
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.PrintPage += (s, e) =>
+            {
+                e.Graphics.DrawImage(image, e.MarginBounds);
+                e.HasMorePages = false; 
+            };
+            PrintDialog printDlg = new PrintDialog();
+            printDlg.Document = printDoc;
+            if (printDlg.ShowDialog() == DialogResult.OK)
+            {
+                printDoc.Print();
+            }
+        }
+
+        private void pictureBox1_SizeChanged(object sender, EventArgs e)
+        {
+            toolStripStatusLabel3.Text = $"Розмір: {pictureBox1.Width}x{pictureBox1.Height} пікселів";
+        }
+
+        private void BUndo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BRedo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FPaint_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Z) // Ctrl+Z
+            {
+              
+            }
+            else if (e.Control && e.KeyCode == Keys.Y) // Ctrl+Y
+            {
+               
+            }
+        }
+
+        private void FPaint_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Z || e.Control && e.KeyCode == Keys.Y)
+            {
+                e.Handled = true; 
             }
         }
     }
